@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:pharmacy_app/screens/assisted_transport/transport_register.dart';
+import 'package:pharmacy_app/screens/service_providers/assisted_transport/transport_register.dart';
 import 'package:pharmacy_app/screens/home/home_screen.dart';
 import 'package:pharmacy_app/screens/profile/profile_screen.dart';
 import 'package:pharmacy_app/screens/service_providers/edit_profile.dart';
@@ -245,7 +245,11 @@ class _StartScreenState extends State<StartScreen> {
                             },
                             child: SvgPicture.asset(AppImaes.phoneicon)),
                            SizedBox(width: 10),
-                           SvgPicture.asset(AppImaes.messegeicon),   
+                           GestureDetector(
+                            onTap: () {
+                              
+                            },
+                            child: SvgPicture.asset(AppImaes.messegeicon)),   
                             ],),
                         isStart
                           ? PrimaryButton(

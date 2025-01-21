@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
-import 'package:pharmacy_app/screens/assisted_transport/transport_register.dart';
+import 'package:pharmacy_app/screens/service_providers/assisted_transport/transport_register.dart';
 import 'package:pharmacy_app/screens/map/start_map.dart';
 import 'package:pharmacy_app/utils/app_colors.dart';
 import 'package:pharmacy_app/utils/app_images.dart';

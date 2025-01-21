@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:pharmacy_app/screens/authentication/welcome/sign_in_as.dart';
+import 'package:pharmacy_app/screens/darwer/derwar_screen.dart';
 import 'package:pharmacy_app/screens/service_providers/self_register.dart';
 import 'package:pharmacy_app/utils/app_colors.dart';
 import 'package:pharmacy_app/utils/app_images.dart';
@@ -38,7 +39,7 @@ class _SplashScreenState extends State<SplashScreen>
           ..forward();
 
     Timer(const Duration(seconds: 3), () {
-      Get.offAll(() => SignInAsScreen());
+      Get.offAll(() => DerwarScreen());
       // if(GetStorage().read(ApiConstants.userToken)==null){
       //   Navigator.of(context).push(
       //     MaterialPageRoute(
