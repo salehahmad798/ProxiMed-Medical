@@ -39,7 +39,7 @@ class _SplashScreenState extends State<SplashScreen>
           ..forward();
 
     Timer(const Duration(seconds: 3), () {
-      Get.offAll(() => DerwarScreen());
+      Get.offAll(() => SignInAsScreen());
       // if(GetStorage().read(ApiConstants.userToken)==null){
       //   Navigator.of(context).push(
       //     MaterialPageRoute(

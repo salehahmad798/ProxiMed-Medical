@@ -2,6 +2,8 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:pharmacy_app/screens/bottom_nav_bar/bottom_nav_bar.dart';
+import 'package:pharmacy_app/screens/home/home_screen.dart';
 import 'package:pharmacy_app/screens/map/start_map.dart';
 import 'package:pharmacy_app/screens/service_providers/profile.dart';
 import 'package:pharmacy_app/utils/app_colors.dart';
@@ -214,7 +216,7 @@ class _SignupScreenState extends State<SignupScreen> {
                             PrimaryButton(
                                 text: 'REGISTER NOW',
                                 onTap: () {
-                                  // Get.to(() => MonthlyPayment());
+                                  Get.to(() => BotomnavbarScreen());
                                   // Get.to(() => StartScreen());
                                 }),
                           ],

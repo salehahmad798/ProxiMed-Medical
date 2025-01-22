@@ -70,8 +70,7 @@ class CustomTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return 
-    Container(
+    return Container(
       margin: EdgeInsets.symmetric(
           // horizontal: .h,
           vertical: 10.w),
@@ -235,12 +234,155 @@ class CustomTextField extends StatelessWidget {
             ),
       ),
     );
-  
-  
   }
 }
 
+class CustomSearchTextField extends StatelessWidget {
+  final TextEditingController? controller;
+  final String hintText;
+  final TextInputType keyboardType;
+  final int maxLines;
+  final bool isPassword;
+  final bool enable;
+  final Widget? suffixIcon;
+  final Widget? preffixIcon;
+  final EdgeInsets? padding;
+  final bool hasSuffix;
+  final bool hasPreffix;
+  final bool hasTopIcon;
+  final int? maxLength;
+  final VoidCallback? onTap;
+  final Color suffixIconColor;
+  final double suffixIconSize;
+  final Color preffixIconColor;
+  final double preffixIconSize;
+  final VoidCallback? suffixIconFunction;
+  final Color themeColor;
+  final Color backcolor;
+  final String? Function(String?)? function;
+  final String? Function(String?)? onChange;
+  final String? Function(String?)? onComplete;
+  final String? Function(String?)? onSaved;
+  final String? Function()? onEditingComplete;
+  double? textFieldheight;
+  TextAlign? textAlign;
+  final double width;
+  final double height;
 
+  CustomSearchTextField({
+    super.key,
+    required this.controller,
+    required this.hintText,
+    required this.keyboardType,
+    this.isPassword = false,
+    this.enable = true,
+    this.suffixIcon,
+    this.suffixIconFunction,
+    this.function,
+    this.hasSuffix = false,
+    this.hasPreffix = true,
+    this.backcolor = Colors.transparent,
+    this.themeColor = AppColors.primaryappcolor,
+    this.suffixIconColor = AppColors.primarybackColor,
+    this.suffixIconSize = 25,
+    this.preffixIconColor = AppColors.searchIconColor,
+    this.preffixIconSize = 30,
+    this.onChange,
+    this.onTap,
+    this.onComplete,
+    this.preffixIcon,
+    this.onSaved,
+    this.onEditingComplete,
+    this.maxLines = 1,
+    this.padding,
+    this.hasTopIcon = false,
+    this.maxLength,
+    this.textFieldheight,
+    this.textAlign,
+    this.width = 388,
+    this.height = 60,
+    required textcolor,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: width.w,
+      height: height.h,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(50.r),
+        border: Border.all(color: AppColors.searchIconColor),
+      ),
+      padding: const EdgeInsets.all(16),
+      child: TextFormField(
+        enabled: enable,
+        controller: controller,
+        maxLines: maxLines,
+        onTap: onTap,
+        textAlign: textAlign ?? TextAlign.start,
+        textInputAction: TextInputAction.next,
+        cursorColor: themeColor,
+        maxLength: maxLength,
+        obscureText: isPassword ? obscureText.value : defaultObscureText.value,
+        obscuringCharacter: "*",
+        keyboardType: keyboardType,
+        onFieldSubmitted: onComplete,
+        onChanged: onChange,
+        onSaved: onSaved,
+        onEditingComplete: onEditingComplete,
+        inputFormatters: [
+          keyboardType == TextInputType.phone
+              ? FilteringTextInputFormatter.allow(
+                  RegExp("[0-9]"),
+                )
+              : FilteringTextInputFormatter.allow(
+                  RegExp("[a-zA-Z  @/:? 0-9 \\- _ .]"),
+                ),
+          keyboardType == TextInputType.phone
+              ? FilteringTextInputFormatter.deny(
+                  RegExp('[\\.|\\,\\-\\_]'),
+                )
+              : FilteringTextInputFormatter.deny(
+                  RegExp('[\\#]'),
+                ),
+        ],
+        style: TextStyle(
+          color: AppColors.primaryappcolor,
+          fontSize: 16.sp,
+        ),
+        validator: function,
+        decoration: InputDecoration(
+            hintText: hintText,
+            hintStyle: TextStyle(
+                color: AppColors.primarybackColor.withOpacity(0.8),
+                fontWeight: FontWeight.w400,
+                fontSize: 16.sp,
+                fontFamily: 'Poppins'),
+            contentPadding: padding ??
+                EdgeInsets.symmetric(
+                  horizontal: 10,
+                  vertical:   3,
+                ),
+            suffixIcon: hasSuffix
+                ? InkWell(
+                    child: isPassword
+                        ? obscureText.value
+                            ? const Icon(Icons.visibility)
+                            : const Icon(Icons.visibility)
+                        : suffixIcon,
+                  )
+                : const SizedBox(),
+            prefixIcon: hasPreffix ? preffixIcon : null,
+            isDense: true,
+            border: InputBorder.none,
+            enabledBorder: OutlineInputBorder(
+                borderSide: const BorderSide(color: Colors.transparent),
+                borderRadius: BorderRadius.circular(50.r))),
+      ),
+    );
+  }
+}
 
 // ignore: must_be_immutable
 class SecondCustomTextField extends StatelessWidget {

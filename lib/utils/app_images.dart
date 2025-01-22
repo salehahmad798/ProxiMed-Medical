@@ -13,7 +13,7 @@ class AppImaes {
   static const String CommunicationsOfficer =
       'assets/app_images/Communications Officer.png';
   static const String healthworkers = 'assets/app_images/4661699 1.png';
-  static const String pharmacies = 'assets/app_images/3138190 1.png';
+  // static const String pharmacies = 'assets/app_images/3138190 1.png';
   static const String veterinary = 'assets/app_images/2295137 1.png';
   static const String assistedtransport = 'assets/app_images/2894975 1.png';
   static const String medicallabs = 'assets/app_images/2971555 1.png';
@@ -70,12 +70,40 @@ class AppImaes {
   
 
 static const String signInImg='assets/app_images/rb_7963 1.png';
+static const String veterinaryimg='assets/app_images/06.png';
+static const String healthWorker ='assets/app_images/worker.png';
+static const String pharmacies ='assets/app_images/pharmacies.png';
+static const String clinics ='assets/app_images/cli.png';
+static const String laboratorire ='assets/app_images/Laboratoire 2 2.png';
+static const String ambulance ='assets/app_images/ambulance_ 1.png';
+
+static const String fileicon ='assets/app_images/Group 1261153497.png';
+static const String usericon ='assets/app_images/Group 1261153497 (2).png';
+static const String carouselClicins ='assets/app_images/Frame 1.png';
+
+
+static const String touch ='assets/app_images/Group 1000003312.png';
+static const String visiabilty ='assets/app_images/Group 1000003311.png';
+
+static const String stomach ='assets/app_images/Group 1000003316.png';
+static const String brain ='assets/app_images/Group 1000003314.png';
+
+static const String born ='assets/app_images/Group 1000003315.png';
+static const String  nutrition='assets/app_images/Group 1000003313.png';
+
+static const String  dermatology='assets/app_images/Group 1000003318.png';
+static const String  bestClicins='assets/app_images/Rectangle 10.png';
+static const String  medlife='assets/app_images/Rectangle 11.png';
+static const String  medicover='assets/app_images/Rectangle 11 (1).png';
+static const String  videoPlayer='assets/app_images/Video.png';
+
 
 //  ========================= app svg ======================
 static const String pharmacy_logo ='assets/app_images/Group 427321916.svg';
 static const String phoneicon ='assets/app_images/Group 13.svg';
 static const String messegeicon ='assets/app_images/Group 12.svg';
-
+static const String sliderImg ='assets/app_images/5_20241209_114451_0004 1.svg';
+static const String sliderImg2 ='assets/app_images/3_20241209_122741_0002 1.svg';
 
 
 }

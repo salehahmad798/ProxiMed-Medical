@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:pharmacy_app/screens/clinics_hospitals/clinics_hospitals.dart';
 import 'package:pharmacy_app/screens/home/health_workers.dart';
 import 'package:pharmacy_app/screens/home/home_card.dart';
 import 'package:pharmacy_app/screens/home/veterinary_screen.dart';
@@ -19,6 +20,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  int _currentPage = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,10 +61,12 @@ class _HomeScreenState extends State<HomeScreen> {
           )
         ],
       ),
+     
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20.w),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
                 height: 20.h,
@@ -73,16 +77,49 @@ class _HomeScreenState extends State<HomeScreen> {
                 fontWeight: FontWeight.w600,
                 color: AppColors.primarybackColor,
               ),
-              CustomTextField(
+              CustomSearchTextField(
                   hasPreffix: true,
                   preffixIcon: Icon(Icons.search),
                   controller: TextEditingController(),
                   hintText: 'Type here to search...',
                   keyboardType: TextInputType.name,
                   textcolor: AppColors.primarybackColor),
-              Image.asset(
-                AppImaes.pharmacypick,
-                fit: BoxFit.cover,
+              Container(
+                height: 200.h,
+                child: PageView.builder(
+                  itemCount: 4,
+                  onPageChanged: (index) {
+                    setState(() {
+                      _currentPage = index;
+                    });
+                  },
+                  itemBuilder: (context, index) {
+                    return Image.asset(
+                      AppImaes.pharmacypick,
+                      fit: BoxFit.cover,
+                    );
+                  },
+                ),
+              ),
+              SizedBox(height: 10.h),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: List.generate(4, (index) {
+                  return Container(
+                    margin: EdgeInsets.symmetric(horizontal: 3.0),
+                    width: 8.0,
+                    height: 8.0,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: _currentPage == index
+                          ? AppColors.primaryappcolor
+                          : Colors.grey,
+                    ),
+                  );
+                }),
+              ),
+              SizedBox(
+                height: 12.h,
               ),
               CText(
                 text: 'Advertising',
@@ -110,7 +147,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   HomeCard(
                     title: 'Health Workers',
-                    image: AppImaes.healthworkers,
+                    image: AppImaes.healthWorker,
                     color: AppColors.primaryappcolor.withOpacity(0.2),
                     onTap: () {
                       Get.to(() => HealthWorkersScreen());
@@ -138,13 +175,15 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   HomeCard(
                     title: 'Clinics & Hospitals',
-                    image: AppImaes.clinicshospitals,
+                    image: AppImaes.clinics,
                     color: Colors.green.withOpacity(0.2),
-                    onTap: () {},
+                    onTap: () {
+                      Get.to(()=>ClinicsHospitalsScreen());
+                    },
                   ),
                   HomeCard(
                     title: 'Medical Labs',
-                    image: AppImaes.medicallabs,
+                    image: AppImaes.laboratorire,
                     color: Colors.purple.withOpacity(0.2),
                     onTap: () {},
                   ),
@@ -158,13 +197,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   HomeCard(
                     title: 'Assisted Transport',
-                    image: AppImaes.assistedtransport,
+                    image: AppImaes.ambulance,
                     color: Colors.orange.withOpacity(0.2),
                     onTap: () {},
                   ),
                   HomeCard(
                     title: 'Veterinary',
-                    image: AppImaes.veterinary,
+                    image: AppImaes.veterinaryimg,
                     color: Colors.purple.withOpacity(0.2),
                     onTap: () {
                       Get.to(VeterinaryScreen());
@@ -175,6 +214,100 @@ class _HomeScreenState extends State<HomeScreen> {
               SizedBox(
                 height: 18.h,
               ),
+              CText(
+                text: 'You have a support Question?',
+                fontSize: 16.11.sp,
+                fontWeight: FontWeight.w600,
+                color: AppColors.primarybackColor,
+              ),
+              SizedBox(
+                height: 10.h,
+              ),
+              CustomSearchTextField(
+                controller: TextEditingController(),
+                hintText: 'Tell Us what’s happening',
+                keyboardType: TextInputType.name,
+                textcolor: AppColors.primaryappcolor,
+                hasSuffix: true,
+                suffixIcon: Icon(
+                  Icons.search,
+                  color: AppColors.primarybackColor,
+                ),
+              ),
+              SizedBox(
+                height: 10.h,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  CText(
+                    text: 'Frequently Asked Question ',
+                    fontSize: 16.11.sp,
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.primarybackColor,
+                  ),
+                  GestureDetector(
+                      onTap: () {},
+                      child: CText(
+                        text: 'Show more',
+                        fontSize: 13.11.sp,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.green,
+                        textDecoration: TextDecoration.underline,
+                      )),
+                ],
+              ),
+              SizedBox(
+                height: 10.h,
+              ),
+                  SizedBox(
+                  height: 10.h,
+                  ),
+                  Container(
+                  height: 200.h,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    
+                    itemCount: 3,
+                    itemBuilder: (context, index) {
+                    if (index == 0) {
+                      return Padding(
+                      padding: EdgeInsets.only(right: 10.w),
+                      child: asked_question_card(
+                        AppImaes.fileicon,
+                        "How do I cancel the existing order?",
+                        AppColors.lightblue,
+                        () {},
+                      ),
+                      );
+                    }else if (index == 1) {
+                      return Padding(
+                      padding: EdgeInsets.only(right: 10.w),
+                      child: asked_question_card(
+                        AppImaes.usericon,
+                        "How do I update my profile picture?",
+                        AppColors.lightpurpal,
+                        () {},
+                      ),
+                        );}
+                     else {
+                      return Padding(
+                      padding: EdgeInsets.only(right: 10.w),
+                      child: asked_question_card(
+                        AppImaes.usericon,
+                        "How do I update my profile picture?",
+                        AppColors.lightpurpal,
+                        () {},
+                      ),
+                      );
+                    }}
+                  )
+                  ),
+                  
+              
+              SizedBox(
+                height: 10.h,
+              ),
             ],
           ),
         ),
@@ -182,39 +315,46 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  // Widget home_screen_card(String image, String title, Color,Function() mytap) {
-  //   return
-  //   GestureDetector(
-  //     onTap: mytap,
-  //     child: Container(
-  //       width: 166.48.w,
-  //       height: 184.71.h,
-  //       decoration: BoxDecoration(
-  //           borderRadius: BorderRadius.circular(26.29.r),
-  //           border: Border.all(width: 1.1.w, color: AppColors.greyColor)),
-  //       child: Column(
-  //         crossAxisAlignment: CrossAxisAlignment.center,
-  //         mainAxisAlignment: MainAxisAlignment.center,
-  //         children: [
-  //           Container(
-  //             width: 87.62.w,
-  //             height: 87.62,
-  //             decoration: BoxDecoration(
-  //                 color: Color, borderRadius: BorderRadius.circular(140.19.r)),
-  //             child: Image.asset(image),
-  //           ),
-  //           SizedBox(
-  //             height: 10.h,
-  //           ),
-  //           CText(
-  //             text: title,
-  //             fontSize: 16,
-  //             fontWeight: FontWeight.w500,
-  //             color: AppColors.primarybackColor,
-  //           )
-  //         ],
-  //       ),
-  //     ),
-  //   );
-  // }
+  Widget asked_question_card(
+      String image, String title, Color, Function() mytap) {
+    return GestureDetector(
+      onTap: mytap,
+      child: Container(
+        width: 166.48.w,
+        height: 184.71.h,
+        padding: EdgeInsets.all(9),
+        decoration: BoxDecoration(
+          color: Color,
+            borderRadius: BorderRadius.circular(
+              8.29.r),
+            ),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start,
+          
+          children: [
+            Container(
+              width: 29.62.w,
+              height: 29.62,
+              decoration: BoxDecoration(
+         borderRadius: BorderRadius.circular(140.19.r)),
+              child: Image.asset(image),
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.05,
+            ),
+            SizedBox(
+              width: 
+              MediaQuery.of(context).size.width * 0.4,
+              child: CText(
+                text: title,
+                fontSize: 16,
+                maxLines: 3,
+                fontWeight: FontWeight.w500,
+                color: AppColors.primarybackColor,
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
 }

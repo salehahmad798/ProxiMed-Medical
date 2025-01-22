@@ -5,7 +5,7 @@ class AppColors {
 
   static const primaryappcolor = Color(0xff2879FF);
   static const headingcolor = Color(0xff32343E);
-
+static const darkgrey=Color(0xff465C67);
   // #6EE7B7   FCD34D  93C5FD   FDBA74
   static const textfieldcolor = Color(0xffF0F5FA);
   static const boxcolor = Color(0xffEEF3FE);
@@ -25,6 +25,10 @@ class AppColors {
   static const levelscolor = Color(0xff4D9CFF);
   // 0C1074
   static const menucolor = Color(0xff0C1074);
+
+  static const lightblue = Color(0xffD7E2FF);
+
+  static const lightpurpal = Color(0xffF5D8FF); 
   // static const greyText = Color(0xffA3B0BF);
   // static const yellow = Color(0xffFAA61A);
 }

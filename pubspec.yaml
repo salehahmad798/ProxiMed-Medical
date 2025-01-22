@@ -53,6 +53,7 @@ dependencies:
   custom_line_indicator_bottom_navbar: ^0.0.8
   dotted_border: ^2.1.0
   fluttertoast: ^8.2.10
+  video_player: ^2.9.2
 dev_dependencies:
   flutter_test:
     sdk: flutter
