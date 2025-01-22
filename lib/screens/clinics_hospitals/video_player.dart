@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:video_player/video_player.dart'; 
+import 'package:pharmacy_app/utils/app_images.dart';
+import 'package:video_player/video_player.dart';
 
 class VideoPlayerWidget extends StatefulWidget {
   final String videoUrl;
@@ -39,7 +40,10 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
             child: Stack(
               alignment: Alignment.center,
               children: [
-                VideoPlayer(_controller),
+                Column(children: [
+                  VideoPlayer(_controller),
+                  Image.asset(AppImaes.videoPlayer, fit: BoxFit.cover),
+                ]),
                 VideoProgressIndicator(_controller, allowScrubbing: true),
                 FloatingActionButton(
                   backgroundColor: Colors.white,

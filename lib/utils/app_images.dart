@@ -104,6 +104,9 @@ static const String phoneicon ='assets/app_images/Group 13.svg';
 static const String messegeicon ='assets/app_images/Group 12.svg';
 static const String sliderImg ='assets/app_images/5_20241209_114451_0004 1.svg';
 static const String sliderImg2 ='assets/app_images/3_20241209_122741_0002 1.svg';
+static const String doctorImg ='assets/app_images/Frame 147.svg';
+static const String usFlag ='assets/app_images/United States of America (US).svg';
+static const String plusIcon ='assets/app_images/Group 92.svg';
 
 
 }
